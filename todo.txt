@@ -1,0 +1,28 @@
+
+Started 9/13/2022
+
+Week 1:
+
+ALREADY DONE:
+-connect to api data from etherscan and extract top 100 holders for 25 choosen coins
+-all coin adresses excel file with all adresses data 
+-coin adresses excel with adresses and daily update token balance
+-daily writer in every excel algo - needs to be done manually 
+
+
+
+IMPORTANT:
+
+-algo that tracks price vs fundamental analysis holders
+  -try using linear regression/ ai/ ml
+  -implement panda data analysis for excel
+
+-python api for coin average price per day / excel w price everyday? or get the price for a specific day 
+
+-fix and find solution in case api error from etherscan!!!
+
+
+
+ALSO:
+-host on replit server
+-send email every day w analysis after ai algo is done
