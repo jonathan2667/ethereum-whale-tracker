@@ -2,34 +2,20 @@ from etherscan import Etherscan
 from openpyxl import Workbook, load_workbook
 import csv
 from datetime import datetime
+from variable import *
+
 
 holders = {}
 
-
-serum_file = 'HoldersEtherscan/export-tokenholders-for-contract-0x476c5E26a75bd202a9683ffD34359C0CC15be0fF.csv'
-serum = "0x476c5e26a75bd202a9683ffd34359c0cc15be0ff"
-serum_holders_file = 'HoldersUptimeData/SerumHolders.xlsx'
-
-bnb_file = 'HoldersEtherscan/export-tokenholders-for-contract-0x4fabb145d64652a948d72533023f6e7a623c7c53.csv'
-bnb = '0x4fabb145d64652a948d72533023f6e7a623c7c53'
-bnb_holders_file = 'HoldersUptimeData/BnbHolders.xlsx'
-
-ftm_file = 'HoldersEtherscan/export-tokenholders-for-contract-0x4e15361fd6b4bb609fa63c81a2be19d873717870.csv'
-ftm = '0x4e15361fd6b4bb609fa63c81a2be19d873717870'
-ftm_holders_file = 'HoldersUptimeData/FtmHolders.xlsx'
-
-
-YOUR_API_KEY = '7HZJFYIG6XT58SP3VWU49NJJ3FSRHP23H6111'
+YOUR_API_KEY = '7HZJFYIG6XT58SP3VWU49NJJ3FSRHP23H6111x1'
 
 eth = Etherscan(YOUR_API_KEY)
-
-
 
 
 wb_coin_addresses = load_workbook('CoinAdresses.xlsx')
 ws_coin_adresses = wb_coin_addresses.active
 
-wb_new = load_workbook(ftm_holders_file) #change here!!!!
+wb_new = load_workbook(yfi_holders_file) #change here!!!!
 ws_new = wb_new.active
 
 
@@ -80,22 +66,24 @@ def write_daily_account_balance(day):
         for cell, cell1 in zip(row_cells, row_cells1):
             print(cnt)
             if cnt < 100:
-                cell.value = eth.get_acc_balance_by_token_and_contract_address(ftm, cell1.value)   #change here
+                cell.value = eth.get_acc_balance_by_token_and_contract_address(yfi, cell1.value)   #change here
 
 
 def main():
-    # holders_f = get_holders_from_csv_file(ftm_file)  #takes from the exported holders files from etherscan.io of a coin the first 100 holcers by quantity  #change here
-    #
-    index_row = 3 #change this
-    # write_holders_in_addresses_file(holders_f, index_row, 'Ftm')    #writes the top 100 holders of the coin in the coinaddresses.xlsx           # CANGE HERE!!!!! index and name
-#
-#    write_holders_data_in_day_tracker(index_row)   #write the in the first row the top 100 holders
+    holders_f = get_holders_from_csv_file(yfi_file)  #takes from the exported holders files from etherscan.io of a coin the first 100 holcers by quantity               #change here
 
-    day_of_the_year = datetime.now().timetuple().tm_yday - 8
+    index_row = 25      #change this
+    write_holders_in_addresses_file(holders_f, index_row, 'Yfi')    #writes the top 100 holders of the coin in the coinaddresses.xlsx           # CANGE HERE!!!!! index and name
+    #
+    write_holders_data_in_day_tracker(index_row)   #write the in the first row the top 100 holders
+
+    day_of_the_year = datetime.now().timetuple().tm_yday - 10 #change to 8
+
     write_daily_account_balance(day_of_the_year) #emits query based on the holder and writes it down based on the DAY!!!!
 
-    wb_new.save(ftm_holders_file)    #change   here
+    wb_new.save(yfi_holders_file)    #change   here
     wb_coin_addresses.save('CoinAdresses.xlsx')
+
 
 if __name__ == "__main__":
     main()
