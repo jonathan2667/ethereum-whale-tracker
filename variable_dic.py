@@ -1,3 +1,6 @@
+list_symbol = ['SRM', 'BNB', 'FTM', 'THETA', 'VET', 'SAND', 'GRT', 'AAVE', 'GALA', 'QNT', 'MKR', 'CRV', '1INCH', 'TEL', 'POLY', 'KP3R', 'DENT', 'OCEAN', 'KNC',
+               'MTL', 'PNT', 'CEL', 'BRD', 'AMP', 'YFI']
+
 dic_var = {
 
 'serum_file' : 'HoldersEtherscan/export-tokenholders-for-contract-0x476c5E26a75bd202a9683ffD34359C0CC15be0fF.csv',
