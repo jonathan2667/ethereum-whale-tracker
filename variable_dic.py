@@ -1,5 +1,10 @@
-list_symbol = ['SRM', 'BNB', 'FTM', 'THETA', 'VET', 'SAND', 'GRT', 'AAVE', 'GALA', 'QNT', 'MKR', 'CRV', '1INCH', 'TEL', 'POLY', 'KP3R', 'DENT', 'OCEAN', 'KNC',
-               'MTL', 'PNT', 'CEL', 'BRD', 'AMP', 'YFI']
+list_symbol = ['SRM', 'BUSD', 'FTM', 'THETA', 'VET', 'SAND', 'GRT', 'AAVE', 'GALA', 'QNT',
+               'MKR', 'CRV', '1INCH', 'TEL', 'POLY', 'KP3R', 'DENT', 'OCEAN', 'KNC', 'MTL',
+               'PNT', 'CEL', 'BRD', 'AMP', 'YFI']
+
+divided_by = [1000000, 1000000000000000000, 1000000000000000000, 1000000000000000000, 1000000000000000000, 1000000000000000000, 1000000000000000000, 1000000000000000000,100000000, 1000000000000000000,
+              1000000000000000000, 1000000000000000000,  1000000000000000000, 100, 1000000000000000000, 1000000000000000000, 100000000, 1000000000000000000, 1000000000000000000,  100000000,
+              1000000000000000000, 10000, 1000000000000000000, 1000000000000000000, 1000000000000000000 ]
 
 dic_var = {
 
@@ -7,9 +12,9 @@ dic_var = {
 'serum' : "0x476c5e26a75bd202a9683ffd34359c0cc15be0ff",
 'serum_holders_file' : 'HoldersUptimeData/SerumHolders.xlsx',
 
-'bnb_file' : 'HoldersEtherscan/export-tokenholders-for-contract-0x4fabb145d64652a948d72533023f6e7a623c7c53.csv',
-'bnb' : '0x4fabb145d64652a948d72533023f6e7a623c7c53',
-'bnb_holders_file' : 'HoldersUptimeData/BnbHolders.xlsx',
+'busd_file' : 'HoldersEtherscan/export-tokenholders-for-contract-0x4fabb145d64652a948d72533023f6e7a623c7c53.csv',
+'busd' : '0x4fabb145d64652a948d72533023f6e7a623c7c53',
+'busd_holders_file' : 'HoldersUptimeData/BusdHolders.xlsx',
 
 'ftm_file' : 'HoldersEtherscan/export-tokenholders-for-contract-0x4e15361fd6b4bb609fa63c81a2be19d873717870.csv',
 'ftm' : '0x4e15361fd6b4bb609fa63c81a2be19d873717870',
