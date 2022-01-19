@@ -12,6 +12,10 @@ ALREADY DONE:
 
 
 IMPORTANT:
+###must verify analyze.py get function value, think too large number divisision
+###ocean looks to be a problem 
+
+-trade size indicator among top 100 holders by time frame(1, 3, 7, 21 days) - gets number of transactions divided on brice basis of transaction
 
 -algo that tracks price vs fundamental analysis holders
   -try using linear regression/ ai/ ml
