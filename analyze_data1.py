@@ -1,9 +1,35 @@
+"""
+    Analysis 1
+
+    Try to analyze crypto data:
+
+        A. Per HOLDER:
+            1. TRADE SIZE INDICAtOR for different time frames
+            2. CVD for different time frames
+
+        B. For top 100 HOLDERS:
+            1. TRADE SIZE INDICAtOR for different time frames
+            2. CVD for different time frames
+
+        How:
+
+        - GET THE DATA for each tool
+        - PROCESS THE DATA with PANDA or MATPLOTLIB
+        _ STORE THE processed data (PNG, etc)
+"""
+
+
+"""     All the modules used     """
+
+import sys
+
+from openpyxl import Workbook, load_workbook
+
+from datetime import datetime
 from main1 import *
 from variable_dic import *
-from openpyxl import Workbook, load_workbook
 from crypto_data import *
-import sys
-from datetime import datetime
+
 
 def get(value, index_till_25):
     return round((int(float(value))/divided_by[index_till_25]), 2)
@@ -50,6 +76,3 @@ def analysis1() :
 
             for period in time_frames:
                 trade_size_indicator(period, ws_new, index_till_25)
-
-
-
