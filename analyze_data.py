@@ -1,8 +1,38 @@
-from main1 import *
-from variable_dic import *
+"""
+    Analysis
+
+    Try to analyze crypto data:
+    
+        Global Analysis of the market day:
+            A. Information extracted based on a short analysis:
+                1.THE TOP HOLDERS VOLUME
+                2.CVD OF TOP HOLDERS
+                3.NUMBERS ACCOUNT THAT ADDED
+                4.NUMBERS ACCOUNT THAT SOLD
+                5.NOUMBERS ACCOUNT THAT NULL
+                
+            B. Information extracted from coinmarketcap API, from cytpto_data.py:
+                1.VOLUME 24h
+                2.CURRENT PRICE
+                3.PERCENT CHANGE
+                4.OVERALL VOLUME 24 H
+        
+    Codes need to be verified for more accurate information!
+        
+"""
+
+"""     All the modules used     """
+
 from openpyxl import Workbook, load_workbook
-from crypto_data import *
 from datetime import datetime
+
+from main1 import *
+from crypto_data import *
+from variable_dic import *
+
+
+"""     Main Functions       """
+
 
 def get(value, index_till_25):
     return round((int(float(value))/divided_by[index_till_25]), 2)
@@ -30,12 +60,13 @@ def travel_over_data(ws_new, index_till_25):
                     portfolios_that_sold = portfolios_that_sold + 1
                 else:
                     portfolios_no_action = portfolios_no_action + 1
-                volume_total_top_holders = volume_total_top_holders + abs(get(cell.value, index_till_25) - get(cell1.value, index_till_25))
-                cvd_top_holders = cvd_top_holders + get(cell.value, index_till_25) - get(cell1.value, index_till_25)
+                volume_total_top_holders = volume_total_top_holders + abs(cell.value - cell1.value)
+                cvd_top_holders = cvd_top_holders + cell.value - cell1.value
 
     volume_total_top_holders = round(volume_total_top_holders, 2)
 
     return volume_total_top_holders, round(cvd_top_holders, 2),  portfolios_that_added, portfolios_that_sold, portfolios_no_action
+
 
 def analysis():
 
