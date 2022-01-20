@@ -1,12 +1,15 @@
-from etherscan import Etherscan
-from openpyxl import Workbook, load_workbook
 import csv
-from datetime import datetime
-from variable import *
-from variable_dic import *
 import sys
 import pprint
 import json
+
+from etherscan import Etherscan
+from openpyxl import Workbook, load_workbook
+
+from variable import *
+from variable_dic import *
+from datetime import datetime
+
 
 holders = {}
 
@@ -48,6 +51,7 @@ def write_holders_data_in_day_tracker(ind, ws_new):
 
     for row_cells in ws_new.iter_cols(min_row=1, max_row=1, max_col=99):
         cnt += 1
+        
         for cell in row_cells:
             cell.value = str(ws_coin_adresses[row_index + str(cnt)].value)
 
@@ -58,10 +62,13 @@ def write_daily_account_balance(day, ws_new, coin_name_address, index_till_25 ):
 
     for row_cells, row_cells1 in zip(ws_new.iter_cols(min_row=day, max_row=day),  ws_new.iter_cols(min_row=1, max_row=1)):
         cnt += 1
+        
         for cell, cell1 in zip(row_cells, row_cells1):
             print(cnt)
+            
             if cnt < 100:
                 cell_value = -1
+                
                 while cell_value == -1:
                     try:
                         cell_value = eth.get_acc_balance_by_token_and_contract_address(coin_name_address, cell1.value)
@@ -80,9 +87,9 @@ def main():
         index = index + 1
 
         if 'holders' in key:
-            
+
             """     Global variabal for every file      """
-            
+
             index_till_25 = index_till_25 + 1
 
             day_of_the_year = datetime.now().timetuple().tm_yday - 18
@@ -100,7 +107,7 @@ def main():
 
 
             """     Main Functions Here     """
-            
+
             holders_f = get_holders_from_csv_file(coin_file, index_till_25)                             #takes from the exported holders files from etherscan.io of a coin the first 100 holcers by quantity               #change here
 
             write_holders_in_addresses_file(holders_f, index_till_25 + 1, coin_name)                    #writes the top 100 holders of the coin in the coinaddresses.xlsx           # CANGE HERE!!!!! index and name
@@ -112,6 +119,7 @@ def main():
 
             wb_new.save(excel_uptime_etherscan_name)
             wb_coin_addresses.save('CoinAdresses.xlsx')
+
 
 if __name__ == "__main__":
     main()
