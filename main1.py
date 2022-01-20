@@ -1,3 +1,15 @@
+"""
+    Main1.py
+
+    File that is probably gonna be hosted online.
+
+    So far:
+
+        -Manually updates the 25 coins using queries to etherscan API.
+        -Analysis Functions files used are analyze_data.py and analyze_data1.py which are imported  
+
+"""
+
 """     All the modules used     """
 
 import csv
@@ -30,15 +42,15 @@ def write_daily_account_balance(day, ws_new, name, index_till_25):
 
     for row_cells, row_cells1 in zip(ws_new.iter_cols(min_row=day, max_row=day),  ws_new.iter_cols(min_row=1, max_row=1)):
         cnt += 1
-        
+
         for cell, cell1 in zip(row_cells, row_cells1):
             print(cnt)
-            
+
             if cnt < 100:
                 cell_value = -1
-                
+
                 """     To Avoid Error Api From Etherscan       """
-                
+
                 while cell_value == -1:
                     try:
                         cell_value = eth.get_acc_balance_by_token_and_contract_address(name, cell1.value)
@@ -57,17 +69,17 @@ def update_for_all_25_upddates():
 
         if 'holders' in key:
             index_till_25 = index_till_25 + 1
-            
+
             day_of_the_year = datetime.now().timetuple().tm_yday - 18
 
             coin_name_address = list(dic_var.items())[index - 2][1]
-            
+
 
             wb_new = load_workbook(value)
             ws_new = wb_new.active
-            
-            
-            print(value) 
+
+
+            print(value)
 
             write_daily_account_balance(day_of_the_year, ws_new, coin_name_address, index_till_25)
 
@@ -76,7 +88,7 @@ def update_for_all_25_upddates():
 
 
 def main():
-    
+
     update_for_all_25_upddates()
 
     #analysis()
