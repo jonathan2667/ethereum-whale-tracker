@@ -1,3 +1,11 @@
+"""
+    Global Variable for every python file to avoid unnecessary repitions and get clean code.
+
+    Need to sort them somehow.
+
+"""
+
+
 list_symbol = ['SRM', 'BUSD', 'FTM', 'THETA', 'VET', 'SAND', 'GRT', 'AAVE', 'GALA', 'QNT',
                'MKR', 'CRV', '1INCH', 'TEL', 'POLY', 'KP3R', 'DENT', 'OCEAN', 'KNC', 'MTL',
                'PNT', 'CEL', 'BRD', 'AMP', 'YFI']
@@ -11,10 +19,11 @@ divided_by = [1000000, 1000000000000000000, 1000000000000000000, 100000000000000
 
 YOUR_API_KEY = '7HZJFYIG6XT58SP3VWU49NJJ3FSRHP23H6'
 
+
 holders = {}
 
-dic_var = {
 
+dic_var = {
 
 'serum_file' : 'HoldersEtherscan/export-tokenholders-for-contract-0x476c5E26a75bd202a9683ffD34359C0CC15be0fF.csv',
 'serum' : "0x476c5e26a75bd202a9683ffd34359c0cc15be0ff",
