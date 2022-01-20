@@ -1,3 +1,5 @@
+"""     All the modules used     """
+
 import csv
 import sys
 import pprint
@@ -11,15 +13,15 @@ from variable_dic import *
 from datetime import datetime
 
 
-holders = {}
-
-YOUR_API_KEY = '7HZJFYIG6XT58SP3VWU49NJJ3FSRHP23H6'
+"""     Setting up the environment      """
 
 eth = Etherscan(YOUR_API_KEY)
 
 wb_coin_addresses = load_workbook('CoinAdresses.xlsx')
 ws_coin_adresses = wb_coin_addresses.active
 
+
+"""     Main Functions       """
 
 def get_holders_from_csv_file(file_holders_etherscan, index_till_25):
     with open(file_holders_etherscan) as csv_file:
@@ -51,7 +53,7 @@ def write_holders_data_in_day_tracker(ind, ws_new):
 
     for row_cells in ws_new.iter_cols(min_row=1, max_row=1, max_col=99):
         cnt += 1
-        
+
         for cell in row_cells:
             cell.value = str(ws_coin_adresses[row_index + str(cnt)].value)
 
@@ -62,12 +64,14 @@ def write_daily_account_balance(day, ws_new, coin_name_address, index_till_25 ):
 
     for row_cells, row_cells1 in zip(ws_new.iter_cols(min_row=day, max_row=day),  ws_new.iter_cols(min_row=1, max_row=1)):
         cnt += 1
-        
+
         for cell, cell1 in zip(row_cells, row_cells1):
             print(cnt)
-            
+
             if cnt < 100:
                 cell_value = -1
+                
+                """     To Avoid Error Api From Etherscan       """
                 
                 while cell_value == -1:
                     try:
@@ -88,7 +92,7 @@ def main():
 
         if 'holders' in key:
 
-            """     Global variabal for every file      """
+            """     Global variables for every file      """
 
             index_till_25 = index_till_25 + 1
 
