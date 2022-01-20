@@ -1,3 +1,25 @@
+"""
+    Main.py
+
+    Starting file for the project.
+    Started 09.01.2022
+
+
+    Need to set up 2 folders :
+        1.HoldersUptimeData - which will contain the daily updated token balance for the top 100 holders of a specific coin
+        2.HoldersEtherscan - which will contain the extracted files from etherscan.io
+        3.Coinaddresses.xlsx - which will contain the first 100 token adresses for every specific coin
+    
+    Steps by main.py, functions for each step:
+        1. For every of the 25 tokens, it inserts in a dictionnary calle "Holders", starting from the HoldersEtherscan holders, the first 100 holders by number of token using CSV
+        2. Writes using the sorted Dictionnary at step 1, the top 100 adresses extracted in the coinaddresses.xlsx
+        3. In the HoldersUptimeData folders, it writes on the first row the top 100 holders by token amount
+        
+        *4. Emits query based on the holder adress and writes it on the row based on the current day.  But not needed her, used in main1.py. 
+
+
+"""
+
 """     All the modules used     """
 
 import csv
@@ -70,9 +92,9 @@ def write_daily_account_balance(day, ws_new, coin_name_address, index_till_25 ):
 
             if cnt < 100:
                 cell_value = -1
-                
+
                 """     To Avoid Error Api From Etherscan       """
-                
+
                 while cell_value == -1:
                     try:
                         cell_value = eth.get_acc_balance_by_token_and_contract_address(coin_name_address, cell1.value)
@@ -112,13 +134,13 @@ def main():
 
             """     Main Functions Here     """
 
-            holders_f = get_holders_from_csv_file(coin_file, index_till_25)                             #takes from the exported holders files from etherscan.io of a coin the first 100 holcers by quantity               #change here
+            holders_f = get_holders_from_csv_file(coin_file, index_till_25)                             #takes from the exported holders files from etherscan.io of a coin the first 100 holcers by quantity
 
-            write_holders_in_addresses_file(holders_f, index_till_25 + 1, coin_name)                    #writes the top 100 holders of the coin in the coinaddresses.xlsx           # CANGE HERE!!!!! index and name
+            write_holders_in_addresses_file(holders_f, index_till_25 + 1, coin_name)                    #writes the top 100 holders of the coin in the coinaddresses.xlsx
 
             write_holders_data_in_day_tracker(index_till_25 + 1, ws_new)                                #write the in the first row the top 100 holders
 
-            write_daily_account_balance(day_of_the_year, ws_new, coin_name_address, index_till_25)      #emits query based on the holder and writes it down based on the DAY!!!!
+            #write_daily_account_balance(day_of_the_year, ws_new, coin_name_address, index_till_25)      #emits query based on the holder and writes it down based on the DAY!!!!
 
 
             wb_new.save(excel_uptime_etherscan_name)
